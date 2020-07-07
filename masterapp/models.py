@@ -27,3 +27,19 @@ class Couser(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
 
+    def __str__(self):
+        return self.username
+
+
+class Contact(models.Model):
+    follower = models.ForeignKey( Couser, related_name='followings', on_delete=models.CASCADE)
+    following = models.ForeignKey(
+        Couser, related_name='followers', on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('follower', 'following')
+
+    def __str__(self):
+        return u'%s follows %s' % (self.follower.username, self.following.username)
+
+
