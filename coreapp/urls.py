@@ -13,9 +13,13 @@ from coreapp.views import (
     AddCommentListPost,
     TimelinePost,
     BookmarkPostList,
+    Profile,
+    People,
+    UpdateContacts,
+    Follower,
+    Following,
+    EditProfile
 )
-
-from coreapp.views import Profile, People, UpdateContacts, Follower, Following, EditProfile
 from django.conf import settings 
 
 
@@ -52,8 +56,8 @@ urlpatterns = [
     path('profile/<str:username>/', Profile.as_view(), name = "get-profile"),
     path('people/', People.as_view(), name = "people"),
     path('update-contacts/<str:username>/', UpdateContacts.as_view(), name= "update-contacts"),
-    path('followers/<str:username>/', Follower.as_view(), name= "followers"),
-    path('followings/<str:username>/', Following.as_view(), name= "followings"),
+    path('followers/<str:username>/', Follower.as_view(), name="followers"),
+    path('followings/<str:username>/', Following.as_view(), name="followings"),
     path('edit-profile/', EditProfile.as_view(), name= "edit-profile")
 
 
