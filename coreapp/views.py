@@ -997,7 +997,7 @@ class Following(APIView):
         offset = int(request.GET.get('offset'))
 
         has_more = False
-        if offset+1 > Couser.objects.exclude(id=current_user_id).count():
+        if offset+limit > Couser.objects.exclude(id=current_user_id).count():
             has_more = False
         else:
             has_more = True

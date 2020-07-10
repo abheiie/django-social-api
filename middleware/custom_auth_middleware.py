@@ -23,6 +23,9 @@ class AuthMiddleware:
     def __call__(self, request):
 
         print("request path-------------->", request.path)
+        namespaces_ = resolve(request.path)
+
+        print("______________________)))))))>>>>>>>>>>>>", namespaces_.url_name)
         protected_request_list = []
 
         protected_request_list.extend([
@@ -30,7 +33,7 @@ class AuthMiddleware:
             'get-profile',
             'people',
             'update-contacts',
-            'followers'
+            'followers',
             'followings',
             'edit-profile',
             "posts-list",
@@ -53,6 +56,8 @@ class AuthMiddleware:
             ])
         namespaces_ = resolve(request.path)
         if namespaces_.url_name in protected_request_list:
+
+            print("&"*30)
 
             # if token is present
             if 'X-Auth-Token' in request.headers:
