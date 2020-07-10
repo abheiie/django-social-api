@@ -133,3 +133,14 @@ class Report(models.Model):
     comment = models.ForeignKey(Comment, related_name='report_comments',on_delete=models.CASCADE, null = True, blank = True, default = None)
     custome_report = models.CharField(max_length=200, null=True, blank=True)
 
+
+class UnverifiedCouser(models.Model):
+    username = models.CharField(max_length=15, null=True, blank=True)
+    fullname = models.CharField(max_length=30, null=True, blank=True)
+    email = models.CharField(max_length=30, null=True, blank=True)
+    mobile = models.CharField(max_length=10, null=True, blank=True)
+    password = models.CharField(max_length=10, null=True, blank=True)
+    is_active = models.BooleanField(default=True)
+    is_email_verified = models.BooleanField(default=False)
+
+
